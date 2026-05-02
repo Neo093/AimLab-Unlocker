@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework> <!-- Most BepInEx 6.0 builds use net6.0 for stability -->
+    <AssemblyName>AimLabUnlocker</AssemblyName>
+    <Product>AimLab Unlocker</Product>
+    <Version>1.0.0</Version>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <LangVersion>latest</LangVersion>
+    
+    <!-- 1. CUSTOM PROPERTY: Users only need to change this one line -->
+    <AimLabPath>C:\Program Files (x86)\Steam\steamapps\common\Aim Lab</AimLabPath>
+    
+    <RestoreAdditionalProjectSources>
+      https://api.nuget.org/v3/index.json;
+      https://nuget.bepinex.dev/v3/index.json;
+      https://nuget.samboy.dev/v3/index.json
+    </RestoreAdditionalProjectSources>
+    <RootNamespace>AimLabUnlocker</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BepInEx.Unity.IL2CPP" Version="6.0.0-be.*" IncludeAssets="compile" />
+    <PackageReference Include="BepInEx.PluginInfoProps" Version="2.*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- 2. DYNAMIC REFERENCE: Uses the property defined above -->
+    <Reference Include="$(AimLabPath)\BepInEx\interop\*.dll" />
+  </ItemGroup>
+
+</Project>
