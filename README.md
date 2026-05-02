@@ -1,53 +1,88 @@
 # 🎯 AimLab Unlocker
 
-A lightweight **BepInEx** plugin for Aim Lab (IL2CPP) designed to unlock various in-game features, including subscriptions and cosmetics. Built using C# and the Harmony patching library.
+A lightweight plugin for **Aim Lab** that unlocks premium features and cosmetics.  
+Built using **C#**, **Harmony**, and **BepInEx (IL2CPP)**.
 
 ---
 
-## ✨ Features
-* **Subscription Bypass**: Automatically unlocks premium features by patching identity checks.
-* **Skin & Cosmetic Unlocker**: Grants access to weapon skins, arm skins, and catalog items[cite: 2].
-* **Safe Loading**: Includes built-in error reporting with Windows MessageBox alerts if the game fails to patch.
+## ✨ What This Does
+- 🔓 Unlocks premium/subscription features  
+- 🎨 Unlocks skins and cosmetic items  
+- ⚡ Runs automatically when the game starts  
+- 🛠 Simple plug-and-play setup  
 
 ---
 
-## 🛠 Prerequisites
-Before installing, ensure you have the following:
-* **Aim Lab** installed via Steam.
-* **BepInEx 6.0 (IL2CPP x64)**: Use the latest "Bleeding Edge" builds from [BepInBuilds](https://builds.bepinex.dev/projects/bepinex_be).
+## 📦 Requirements
+- Aim Lab (Steam version)  
+- BepInEx **IL2CPP x64 (Bleeding Edge)**  
 
 ---
 
 ## 🚀 Installation
 
-### 1. Setup BepInEx
-1. Download the **BepInEx Unity IL2CPP x64** zip file.
-2. Extract the contents into your Aim Lab game folder (e.g., `C:\Program Files (x86)\Steam\steamapps\common\Aim Lab`).
-3. Launch the game once. Wait for the console to finish generating "interop" files—this may take a few minutes. Close the game once you reach the main menu.
-
-### 2. Install the Plugin
-1. Download the latest `AimLabUnlocker.dll` from the **Releases** page.
-2. Move the `.dll` file into:  
-   `Aim Lab/BepInEx/plugins/`
-3. Launch Aim Lab and enjoy the unlocked features!
+### 1. Install BepInEx
+1. Download **BepInEx IL2CPP x64**
+2. Extract it into your Aim Lab folder  
+   Example:Steam/steamapps/common/Aim Lab
+3. Run the game once (important)
+4. Close the game  
 
 ---
 
-## ⚙️ Configuration
-To disable the BepInEx console window for a cleaner desktop:
-1. Navigate to `Aim Lab/BepInEx/config/BepInEx.cfg`.
-2. Find `Enabled` under the `[Logging.Console]` section and set it to `false`.
+### 2. Install Plugin
+1. Download `AimLabUnlocker.dll`  
+2. Move it to: Aim Lab/BepInEx/plugins/
+3. Launch the game  
+
+Done ✅
 
 ---
 
-## 💻 Building from Source
-If you want to modify the code or compile it yourself:
+## ⚙️ Optional (Hide Console)
+1. Open: Aim Lab/BepInEx/config/BepInEx.cfg
+2. Find: [Logging.Console]
+          Enabled = true
+3. Change to: Enabled = false
+
+---
+
+## 💻 Build From Source
 
 ### Requirements
-* **Visual Studio 2022** (with the ".NET desktop development" workload).
-* **.NET 6.0 SDK** or higher.
+- Visual Studio 2022  
+- .NET 6 SDK  
 
 ### Steps
-1. **Clone the Repository**:
-   ```bash
-   git clone [https://github.com/your-username/AimLabUnlocker.git](https://github.com/your-username/AimLabUnlocker.git)
+1. Clone the repository  
+2. Open `.sln` in Visual Studio  
+3. Fix references:
+- `UnityEngine.dll`
+- `Il2CppSystem.dll`
+
+Located in: Aim Lab/BepInEx/interop
+
+4. Build in **Release mode**
+
+Output: bin/Release/net6.0/AimLabUnlocker.dll
+
+---
+
+## 📁 Project Files
+- `Plugin.cs` → Main loader  
+- `Patches.cs` → Unlock logic  
+- `.csproj` → Project config  
+
+---
+
+## ⚠️ Notes
+- Use only **IL2CPP version** of BepInEx  
+- Run the game once before installing plugin  
+- Check logs if issues: BepInEx/LogOutput.log
+
+---
+
+## ❗ Disclaimer
+This project is for educational purposes only.  
+Using mods may violate the game's Terms of Service.  
+Use at your own risk.
